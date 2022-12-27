@@ -5,17 +5,20 @@ const getHomePage: RequestHandler = (req, res, next) => {
 };
 
 const setupProfile: RequestHandler = async (req, res, next) => {
-    // res.render('profile');
     try {
         await handleSetupProfileAPI();
-        res.redirect('/');
+         res.redirect('/');
     } catch (error) {
         console.log(error);
         next(error);
     }
 };
 
-export default {
-    getHomePage,
-    setupProfile,
+const fetchSetupProfilePage: RequestHandler = async (req, res, next) => {
+    try {
+        res.render('profile');
+    } catch (error) {
+        next(error);
+    }
 };
+export default { getHomePage, setupProfile, fetchSetupProfilePage };
