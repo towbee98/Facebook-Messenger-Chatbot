@@ -28,6 +28,10 @@ const postWebHooks: RequestHandler = (req, res, next) => {
         body.entry.forEach(function (entry: any) {
             let webhook_event = entry.messaging[0];
             console.log(webhook_event);
+
+            // Get the sender PSID
+            let sender_psid = webhook_event.sender.id;
+            console.log('Sender PSID: ' + sender_psid);
         });
         res.status(200).send('Event received');
     } else {
