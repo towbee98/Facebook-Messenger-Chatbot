@@ -1,5 +1,5 @@
 import axios from 'axios';
-import PAGE_ACCESS_TOKEN from '../config';
+import config from '../config';
 
 // Handles messages events
 const handleMessage = (sender_psid: string, received_message: any) => {
@@ -29,11 +29,11 @@ const callSendAPI = (sender_psid: string, response: any) => {
         },
         message: response,
     };
-    console.log(PAGE_ACCESS_TOKEN);
+
     // Send the HTTP request to the Messenger Platform
     axios({
         url: 'https://graph.facebook.com/v2.6/me/messages',
-        params: { access_token: PAGE_ACCESS_TOKEN },
+        params: { access_token: config.PAGE_ACCESS_TOKEN },
         method: 'POST',
         data: request_body,
     })
