@@ -41,6 +41,7 @@ const callSendAPI = (sender_psid: string, response: any) => {
             console.log('message sent!');
         })
         .catch((err) => {
+            console.log(err);
             console.log('Unable to send message!' + err.message);
         });
 };
