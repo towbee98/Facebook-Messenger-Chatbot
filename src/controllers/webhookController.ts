@@ -1,5 +1,10 @@
 import { RequestHandler } from 'express';
 import config from '../config';
+import {
+    handleMessage,
+    handlePostback,
+    callSendAPI,
+} from '../helpers/eventHandlers';
 const getWebHooks: RequestHandler = (req, res, next) => {
     // Parse the query params
     let mode = req.query['hub.mode'];
@@ -32,6 +37,14 @@ const postWebHooks: RequestHandler = (req, res, next) => {
             // Get the sender PSID
             let sender_psid = webhook_event.sender.id;
             console.log('Sender PSID: ' + sender_psid);
+
+            // Check if the event is a message or postback and
+            // pass the event to the appropriate handler function
+            if (webhook_event.message) {
+                handleMessage(sender_psid, webhook_event.message);
+            } else if (webhook_event.postback) {
+                handlePostback(sender_psid, webhook_event.postback);
+            }
         });
         res.status(200).send('Event received');
     } else {

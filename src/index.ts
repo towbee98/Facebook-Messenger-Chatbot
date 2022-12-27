@@ -1,4 +1,4 @@
-import express, { Application } from 'express';
+import express, { Application, Request, Response, NextFunction } from 'express';
 
 import config from './config';
 import router from './routes/index';
@@ -19,4 +19,12 @@ let port = config.PORT || 8080;
 
 app.listen(port, () => {
     console.log(`App is listening at port ${port}`);
+});
+
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+    const statusCode = err.status || 500;
+    res.status(statusCode).json({
+        status: 'error',
+        message: err.message,
+    });
 });
