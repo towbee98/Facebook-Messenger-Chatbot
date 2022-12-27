@@ -29,7 +29,7 @@ const callSendAPI = (sender_psid: string, response: any) => {
         },
         message: response,
     };
-
+    console.log(PAGE_ACCESS_TOKEN);
     // Send the HTTP request to the Messenger Platform
     axios({
         url: 'https://graph.facebook.com/v2.6/me/messages',
@@ -41,7 +41,7 @@ const callSendAPI = (sender_psid: string, response: any) => {
             console.log('message sent!');
         })
         .catch((err) => {
-            console.log('Unable to send message!' + err);
+            console.log('Unable to send message!' + err.message);
         });
 };
 
