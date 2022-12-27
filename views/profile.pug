@@ -1,0 +1,12 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        title Ecommerce| #{title}
+        block head
+    body 
+        h2 Hello World
+        form(action="/set-up-profile", method="post") 
+            h1 Setup profile: 
+            button(type="submit") Submit
