@@ -38,6 +38,7 @@ let handleSetupProfileAPI = async () => {
             method: 'POST',
             data: request_body,
         });
+        console.log(response);
         console.log('Done');
         return response;
     } catch (error) {
