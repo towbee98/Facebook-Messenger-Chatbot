@@ -59,12 +59,11 @@ const handlePostback = (sender_psid: string, received_postback: any) => {
         response = { text: 'Thanks!' };
     } else if (payload === 'no') {
         response = { text: 'Oops, try sending another image.' };
+    } else if (payload === 'GET_STARTED') {
+        response = {
+            text: `Welcome  to O.T Creatives page`,
+        };
     }
-    //  else if (payload === 'GET_STARTED') {
-    //     response = {
-    //         text: "It's nice seeing your message.Wouldd you like to make an order",
-    //     };
-    // }
     // Send the message to acknowledge the postback
     callSendAPI(sender_psid, response);
 };
@@ -90,7 +89,7 @@ const callSendAPI = (sender_psid: string, response: any) => {
             console.log('message sent!');
         })
         .catch((err) => {
-            console.log(err);
+            // console.log(err);
             console.log('Unable to send message!' + err.message);
         });
 };
