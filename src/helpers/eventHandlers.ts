@@ -76,32 +76,31 @@ const handlePostback = async (sender_psid: string, received_postback: any) => {
 
 // Sends response messages via the Send API
 const callSendAPI = async (sender_psid: string, response: any) => {
-    //Mark message as read and send a typing on norification
-    await markMessageAsRead(sender_psid);
-    await markMessageAsTypingOn(sender_psid);
+    try {
+        //Mark message as read and send a typing on norification
+        await markMessageAsRead(sender_psid);
+        await markMessageAsTypingOn(sender_psid);
 
-    // Construct the message body
-    let request_body = {
-        recipient: {
-            id: sender_psid,
-        },
-        message: response,
-    };
+        // Construct the message body
+        let request_body = {
+            recipient: {
+                id: sender_psid,
+            },
+            message: response,
+        };
 
-    // Send the HTTP request to the Messenger Platform
-    axios({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        params: { access_token: config.PAGE_ACCESS_TOKEN },
-        method: 'POST',
-        data: request_body,
-    })
-        .then((res) => {
-            console.log('message sent!');
-        })
-        .catch((err) => {
-            // console.log(err);
-            console.log('Unable to send message!' + err.message);
+        // Send the HTTP request to the Messenger Platform
+        const res = await axios({
+            url: 'https://graph.facebook.com/v2.6/me/messages',
+            params: { access_token: config.PAGE_ACCESS_TOKEN },
+            method: 'POST',
+            data: request_body,
         });
+        console.log('Message Sent');
+    } catch (error) {
+        // console.log(err);
+        console.log('Unable to send message!' + error);
+    }
 };
 
 export { handleMessage, handlePostback, callSendAPI };
