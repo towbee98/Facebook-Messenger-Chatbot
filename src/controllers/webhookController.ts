@@ -48,7 +48,8 @@ const postWebHooks: RequestHandler = (req, res, next) => {
         });
         res.status(200).send('Event received');
     } else {
-        res.sendStatus(400);
+        console.log('webhook event', body.object);
+        res.sendStatus(404);
     }
 };
 
