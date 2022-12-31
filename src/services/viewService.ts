@@ -42,6 +42,7 @@ let handleSetupProfileAPI = async () => {
         console.log('Done');
         return response;
     } catch (error) {
+        console.log('error occured in the handleSetup Profile handler', error);
         throw error;
     }
 };

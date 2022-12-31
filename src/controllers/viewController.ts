@@ -7,9 +7,9 @@ const getHomePage: RequestHandler = (req, res, next) => {
 const setupProfile: RequestHandler = async (req, res, next) => {
     try {
         await handleSetupProfileAPI();
-         res.redirect('/');
+        res.redirect('/');
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         next(error);
     }
 };
