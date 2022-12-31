@@ -47,4 +47,19 @@ let handleSetupProfileAPI = async () => {
     }
 };
 
-export { handleSetupProfileAPI };
+const fetchFacebookUsername = async (user_psid: string) => {
+    try {
+        const url = `https://graph.facebook.com/${user_psid}?fields=first_name,last_name,profile_pic&access_token=${config.PAGE_ACCESS_TOKEN}`;
+        const response = await axios({
+            url,
+            method: 'GET',
+        });
+        console.log(response);
+        console.log('Done');
+        return response;
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+};
+export { handleSetupProfileAPI, fetchFacebookUsername };

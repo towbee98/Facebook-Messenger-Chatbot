@@ -1,5 +1,6 @@
 import axios from 'axios';
 import config from '../config';
+import { fetchFacebookUsername } from '../services/viewService';
 
 // Handles messages events
 const handleMessage = (sender_psid: string, received_message: any) => {
@@ -60,8 +61,9 @@ const handlePostback = (sender_psid: string, received_postback: any) => {
     } else if (payload === 'no') {
         response = { text: 'Oops, try sending another image.' };
     } else if (payload === 'GET_STARTED') {
+        fetchFacebookUsername(sender_psid);
         response = {
-            text: `Welcome  to O.T Creatives page`,
+            text: `Welcome to O.T Creatives page`,
         };
     }
     // Send the message to acknowledge the postback
