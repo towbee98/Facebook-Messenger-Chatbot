@@ -54,9 +54,9 @@ const fetchFacebookUsername = async (user_psid: string) => {
             url,
             method: 'GET',
         });
-        console.log(response);
+        const username = `${response.data.first_name} ${response.data.last_name}`;
         console.log('Done');
-        return response;
+        return username;
     } catch (err) {
         console.log(err);
         throw err;
