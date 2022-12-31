@@ -62,4 +62,53 @@ const fetchFacebookUsername = async (user_psid: string) => {
         throw err;
     }
 };
-export { handleSetupProfileAPI, fetchFacebookUsername };
+
+const markMessageAsTypingOn = async (sender_psid: string) => {
+    try {
+        const url = `https://graph.facebook.com/v6.0/me/messages?access_token=${config.PAGE_ACCESS_TOKEN}`;
+        const request_body = {
+            recipient: {
+                id: sender_psid,
+            },
+            sender_action: 'typing_on',
+        };
+        const response = await axios({
+            url,
+            method: 'POST',
+            data: request_body,
+        });
+        console.log(response);
+        console.log('Done');
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};
+
+const markMessageAsRead = async (sender_psid: string) => {
+    try {
+        const url = `https://graph.facebook.com/v6.0/me/messages?access_token=${config.PAGE_ACCESS_TOKEN}`;
+        const request_body = {
+            recipient: {
+                id: sender_psid,
+            },
+            sender_action: 'mark_seen',
+        };
+        const response = await axios({
+            url,
+            method: 'POST',
+            data: request_body,
+        });
+        console.log(response);
+        console.log('Done');
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};
+export {
+    handleSetupProfileAPI,
+    fetchFacebookUsername,
+    markMessageAsTypingOn,
+    markMessageAsRead,
+};

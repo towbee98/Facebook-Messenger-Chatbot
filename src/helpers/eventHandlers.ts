@@ -1,6 +1,10 @@
 import axios from 'axios';
 import config from '../config';
-import { fetchFacebookUsername } from '../services/viewService';
+import {
+    fetchFacebookUsername,
+    markMessageAsRead,
+    markMessageAsTypingOn,
+} from '../services/handlerService';
 
 // Handles messages events
 const handleMessage = (sender_psid: string, received_message: any) => {
@@ -63,7 +67,7 @@ const handlePostback = async (sender_psid: string, received_postback: any) => {
     } else if (payload === 'GET_STARTED') {
         const username = await fetchFacebookUsername(sender_psid);
         response = {
-            text: `Welcome ${username} to O.T Creatives page`,
+            text: `Hi ${username},  Welcome to O.T Creatives page`,
         };
     }
     // Send the message to acknowledge the postback
@@ -71,7 +75,11 @@ const handlePostback = async (sender_psid: string, received_postback: any) => {
 };
 
 // Sends response messages via the Send API
-const callSendAPI = (sender_psid: string, response: any) => {
+const callSendAPI = async (sender_psid: string, response: any) => {
+    //Mark message as read and send a typing on norification
+    await markMessageAsRead(sender_psid);
+    await markMessageAsTypingOn(sender_psid);
+
     // Construct the message body
     let request_body = {
         recipient: {
