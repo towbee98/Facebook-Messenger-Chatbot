@@ -33,6 +33,7 @@ const sendWelcomeMessage = async (sender_psid: string) => {
                     content_type: 'text',
                     title: 'Talk to an agent',
                     payload: 'CARE_HELP',
+                    //payload:'TALK_AGENT',
                 },
                 {
                     content_type: 'text',
@@ -83,4 +84,115 @@ const sendMessage = async (sender_psid: string, response: any) => {
     }
 };
 
-export { sendMessage, sendWelcomeMessage };
+const sendCategories = async (sender_psid: string) => {
+    try {
+        console.log(sender_psid);
+        let response = {
+            attachment: {
+                type: 'template',
+                payload: {
+                    template_type: 'generic',
+                    elements: [
+                        {
+                            title: 'Welcome!',
+                            image_url:
+                                'https://raw.githubusercontent.com/fbsamples/original-coast-clothing/main/public/styles/male-work.jpg',
+                            subtitle: 'We have the right hat for everyone.',
+                            default_action: {
+                                type: 'web_url',
+                                url: 'https://www.originalcoastclothing.com/',
+                                webview_height_ratio: 'tall',
+                            },
+                            buttons: [
+                                {
+                                    type: 'web_url',
+                                    url: 'https://www.originalcoastclothing.com/',
+                                    title: 'View Website',
+                                },
+                                {
+                                    type: 'postback',
+                                    title: 'Start Chatting',
+                                    payload: 'DEVELOPER_DEFINED_PAYLOAD',
+                                },
+                            ],
+                        },
+                        {
+                            title: 'Welcome 2!',
+                            image_url:
+                                'https://raw.githubusercontent.com/fbsamples/original-coast-clothing/main/public/styles/male-work.jpg',
+                            subtitle: 'We have the right hat for everyone.',
+                            default_action: {
+                                type: 'web_url',
+                                url: 'https://www.originalcoastclothing.com/',
+                                webview_height_ratio: 'tall',
+                            },
+                            buttons: [
+                                {
+                                    type: 'web_url',
+                                    url: 'https://www.originalcoastclothing.com/',
+                                    title: 'View Website',
+                                },
+                                {
+                                    type: 'postback',
+                                    title: 'Start Chatting',
+                                    payload: 'DEVELOPER_DEFINED_PAYLOAD',
+                                },
+                            ],
+                        },
+                        {
+                            title: 'Welcome 3!',
+                            image_url:
+                                'https://raw.githubusercontent.com/fbsamples/original-coast-clothing/main/public/styles/male-work.jpg',
+                            subtitle: 'We have the right hat for everyone.',
+                            default_action: {
+                                type: 'web_url',
+                                url: 'https://www.originalcoastclothing.com/',
+                                webview_height_ratio: 'tall',
+                            },
+                            buttons: [
+                                {
+                                    type: 'web_url',
+                                    url: 'https://www.originalcoastclothing.com/',
+                                    title: 'View Website',
+                                },
+                                {
+                                    type: 'postback',
+                                    title: 'Start Chatting',
+                                    payload: 'DEVELOPER_DEFINED_PAYLOAD',
+                                },
+                            ],
+                        },
+                    ],
+                },
+            },
+        };
+        await sendMessage(sender_psid, response);
+        console.log('done');
+    } catch (error) {
+        throw error;
+    }
+};
+
+const sendLookupOrder = async (sender_psid: string) => {
+    try {
+        console.log(sender_psid);
+    } catch (error) {
+        throw error;
+    }
+};
+
+const requestTalkToAgent = async (sender_psid: string) => {
+    try {
+        console.log(sender_psid);
+    } catch (error) {
+        throw error;
+    }
+};
+
+export {
+    sendMessage,
+    sendWelcomeMessage,
+    sendCategories,
+    sendLookupOrder,
+    requestTalkToAgent,
+};

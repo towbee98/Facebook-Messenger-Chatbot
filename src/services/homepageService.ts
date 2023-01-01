@@ -18,13 +18,13 @@ let handleSetupProfileAPI = async () => {
                         },
                         {
                             type: 'postback',
-                            title: 'Outfit suggestions',
+                            title: 'Restart this converstion',
                             payload: 'CURATION',
                         },
                         {
                             type: 'web_url',
-                            title: 'Shop now',
-                            url: 'https://www.originalcoastclothing.com/',
+                            title: 'View facebook fan page',
+                            url: 'https://www.facebook.com/O,T',
                             webview_height_ratio: 'full',
                         },
                     ],

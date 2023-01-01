@@ -17,14 +17,14 @@ app.set('views', 'views');
 app.use('/', router);
 let port = config.PORT || 8080;
 
-app.listen(port, () => {
-    console.log(`App is listening at port ${port}`);
-});
-
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
     const statusCode = err.status || 500;
     res.status(statusCode).json({
         status: 'error',
         message: err.message,
     });
+});
+
+app.listen(port, () => {
+    console.log(`App is listening at port ${port}`);
 });
