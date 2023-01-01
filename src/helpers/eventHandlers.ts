@@ -106,6 +106,8 @@ const handlePostback = async (sender_psid: string, received_postback: any) => {
         await backToCategories(sender_psid);
     } else if (payload === 'SET_INFO_ORDER') {
         await setInfoOrderByWebview(sender_psid);
+    } else if (payload === 'BACK_TO_MAIN_MENU') {
+        await backToMainMenu(sender_psid);
     }
 };
 
