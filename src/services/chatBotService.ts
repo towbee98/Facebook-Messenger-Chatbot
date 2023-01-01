@@ -5,6 +5,7 @@ import {
     markMessageAsTypingOn,
 } from '../services/homepageService';
 import { fetchFacebookUsername } from '../services/homepageService';
+import { sendCategoriesTemplate } from '../helpers/templateMessage';
 
 const sendWelcomeMessage = async (sender_psid: string) => {
     try {
@@ -87,85 +88,7 @@ const sendMessage = async (sender_psid: string, response: any) => {
 const sendCategories = async (sender_psid: string) => {
     try {
         console.log(sender_psid);
-        let response = {
-            attachment: {
-                type: 'template',
-                payload: {
-                    template_type: 'generic',
-                    elements: [
-                        {
-                            title: 'Headphones',
-                            image_url: 'https://bit.ly/imageHeadphones',
-                            subtitle:
-                                'Noise canceling wireless bluetooth headphones',
-                            default_action: {
-                                type: 'web_url',
-                                url: 'https://bit.ly/webHeadphones',
-                                webview_height_ratio: 'tall',
-                            },
-                            buttons: [
-                                {
-                                    type: 'web_url',
-                                    url: 'https://bit.ly/webHeadphones',
-                                    title: 'View Website',
-                                },
-                                {
-                                    type: 'postback',
-                                    title: 'Show Headphones',
-                                    payload: 'SHOW_HEADPHONES',
-                                },
-                            ],
-                        },
-                        {
-                            title: 'TV',
-                            image_url: 'https://bit.ly/imageTV',
-                            subtitle:
-                                'Master of quality and incredible clarity',
-                            default_action: {
-                                type: 'web_url',
-                                url: 'https://bit.ly/webTelevision',
-                                webview_height_ratio: 'tall',
-                            },
-                            buttons: [
-                                {
-                                    type: 'web_url',
-                                    url: 'https://bit.ly/webTelevision',
-                                    title: 'View  on Website',
-                                },
-                                {
-                                    type: 'postback',
-                                    title: 'Show Tvs',
-                                    payload: 'SHOW_TV',
-                                },
-                            ],
-                        },
-                        {
-                            title: 'PlayStation',
-                            image_url: 'https://bit.ly/imagePlaystation',
-                            subtitle:
-                                'Incredible games and endless entertainment.',
-                            default_action: {
-                                type: 'web_url',
-                                url: 'https://bit.ly/webPlaystation',
-                                webview_height_ratio: 'tall',
-                            },
-                            buttons: [
-                                {
-                                    type: 'web_url',
-                                    url: 'https://bit.ly/webPlaystation',
-                                    title: 'View Website',
-                                },
-                                {
-                                    type: 'postback',
-                                    title: 'Show Playstation',
-                                    payload: 'SHOW_PLAYSTATION',
-                                },
-                            ],
-                        },
-                    ],
-                },
-            },
-        };
+        let response = sendCategoriesTemplate();
         await sendMessage(sender_psid, response);
         console.log('done');
     } catch (error) {
@@ -189,10 +112,43 @@ const requestTalkToAgent = async (sender_psid: string) => {
     }
 };
 
+const showTvs = async (sender_psid: string) => {
+    try {
+        console.log(sender_psid);
+    } catch (error) {
+        throw error;
+    }
+};
+const showHeadPhones = async (sender_psid: string) => {
+    try {
+        console.log(sender_psid);
+    } catch (error) {
+        throw error;
+    }
+};
+const showPlayStations = async (sender_psid: string) => {
+    try {
+        console.log(sender_psid);
+    } catch (error) {
+        throw error;
+    }
+};
+
+const backToCategories = async (sender_psid: string) => {
+    try {
+        await sendCategories(sender_psid);
+    } catch (error) {
+        throw error;
+    }
+};
 export {
     sendMessage,
     sendWelcomeMessage,
     sendCategories,
     sendLookupOrder,
     requestTalkToAgent,
+    showTvs,
+    showHeadPhones,
+    showPlayStations,
+    backToCategories,
 };

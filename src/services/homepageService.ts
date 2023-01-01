@@ -19,7 +19,7 @@ let handleSetupProfileAPI = async () => {
                         {
                             type: 'postback',
                             title: 'Restart this converstion',
-                            payload: 'CURATION',
+                            payload: 'RESTART_CONVERSATION',
                         },
                         {
                             type: 'web_url',

@@ -1,10 +1,14 @@
 import { fetchFacebookUsername } from '../services/homepageService';
 import {
+    backToCategories,
     requestTalkToAgent,
     sendCategories,
     sendLookupOrder,
     sendMessage,
     sendWelcomeMessage,
+    showHeadPhones,
+    showPlayStations,
+    showTvs,
 } from '../services/chatBotService';
 
 // Handles messages events
@@ -23,6 +27,7 @@ const handleMessage = async (sender_psid: string, received_message: any) => {
                 : quick_reply_payload === 'CARE_HELP'
                 ? await requestTalkToAgent(sender_psid)
                 : null;
+            return;
         }
         let response: any;
 
@@ -80,17 +85,22 @@ const handlePostback = async (sender_psid: string, received_postback: any) => {
     let payload = received_postback.payload;
 
     // Set the response based on the postback payload
-    if (payload === 'yes') {
-        response = { text: 'Thanks!' };
-        await sendMessage(sender_psid, response);
-    } else if (payload === 'no') {
-        response = { text: 'Oops, try sending another image.' };
-        await sendMessage(sender_psid, response);
-    } else if (payload === 'GET_STARTED') {
+    if (payload === 'CARE_HELP') {
+        await requestTalkToAgent(sender_psid);
+    } else if (
+        payload === 'GET_STARTED' ||
+        payload === 'RESTART_CONVERSATION'
+    ) {
         await sendWelcomeMessage(sender_psid);
+    } else if (payload === 'SHOW_HEADPHONES') {
+        await showHeadPhones(sender_psid);
+    } else if (payload === 'SHOW_TV') {
+        await showTvs(sender_psid);
+    } else if (payload === 'SHOW_PLAYSTATION') {
+        await showPlayStations(sender_psid);
+    } else if (payload === 'BACK_TO_CATEGORIES') {
+        await backToCategories(sender_psid);
     }
-    // Send the message to acknowledge the postback
-    // await sendMessage(sender_psid, response);
 };
 
 export { handleMessage, handlePostback };
