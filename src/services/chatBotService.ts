@@ -94,71 +94,71 @@ const sendCategories = async (sender_psid: string) => {
                     template_type: 'generic',
                     elements: [
                         {
-                            title: 'Welcome!',
-                            image_url:
-                                'https://raw.githubusercontent.com/fbsamples/original-coast-clothing/main/public/styles/male-work.jpg',
-                            subtitle: 'We have the right hat for everyone.',
+                            title: 'Headphones',
+                            image_url: 'https://bit.ly/imageHeadphones',
+                            subtitle:
+                                'Noise canceling wireless bluetooth headphones',
                             default_action: {
                                 type: 'web_url',
-                                url: 'https://www.originalcoastclothing.com/',
+                                url: 'https://bit.ly/webHeadphones',
                                 webview_height_ratio: 'tall',
                             },
                             buttons: [
                                 {
                                     type: 'web_url',
-                                    url: 'https://www.originalcoastclothing.com/',
+                                    url: 'https://bit.ly/webHeadphones',
                                     title: 'View Website',
                                 },
                                 {
                                     type: 'postback',
-                                    title: 'Start Chatting',
-                                    payload: 'DEVELOPER_DEFINED_PAYLOAD',
+                                    title: 'Show Headphones',
+                                    payload: 'SHOW_HEADPHONES',
                                 },
                             ],
                         },
                         {
-                            title: 'Welcome 2!',
-                            image_url:
-                                'https://raw.githubusercontent.com/fbsamples/original-coast-clothing/main/public/styles/male-work.jpg',
-                            subtitle: 'We have the right hat for everyone.',
+                            title: 'TV',
+                            image_url: 'https://bit.ly/imageTV',
+                            subtitle:
+                                'Master of quality and incredible clarity',
                             default_action: {
                                 type: 'web_url',
-                                url: 'https://www.originalcoastclothing.com/',
+                                url: 'https://bit.ly/webTelevision',
                                 webview_height_ratio: 'tall',
                             },
                             buttons: [
                                 {
                                     type: 'web_url',
-                                    url: 'https://www.originalcoastclothing.com/',
-                                    title: 'View Website',
+                                    url: 'https://bit.ly/webTelevision',
+                                    title: 'View  on Website',
                                 },
                                 {
                                     type: 'postback',
-                                    title: 'Start Chatting',
-                                    payload: 'DEVELOPER_DEFINED_PAYLOAD',
+                                    title: 'Show Tvs',
+                                    payload: 'SHOW_TV',
                                 },
                             ],
                         },
                         {
-                            title: 'Welcome 3!',
-                            image_url:
-                                'https://raw.githubusercontent.com/fbsamples/original-coast-clothing/main/public/styles/male-work.jpg',
-                            subtitle: 'We have the right hat for everyone.',
+                            title: 'PlayStation',
+                            image_url: 'https://bit.ly/imagePlaystation',
+                            subtitle:
+                                'Incredible games and endless entertainment.',
                             default_action: {
                                 type: 'web_url',
-                                url: 'https://www.originalcoastclothing.com/',
+                                url: 'https://bit.ly/webPlaystation',
                                 webview_height_ratio: 'tall',
                             },
                             buttons: [
                                 {
                                     type: 'web_url',
-                                    url: 'https://www.originalcoastclothing.com/',
+                                    url: 'https://bit.ly/webPlaystation',
                                     title: 'View Website',
                                 },
                                 {
                                     type: 'postback',
-                                    title: 'Start Chatting',
-                                    payload: 'DEVELOPER_DEFINED_PAYLOAD',
+                                    title: 'Show Playstation',
+                                    payload: 'SHOW_PLAYSTATION',
                                 },
                             ],
                         },
