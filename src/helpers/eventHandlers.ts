@@ -1,5 +1,5 @@
 import { fetchFacebookUsername } from '../services/homepageService';
-import { sendMessage } from '../services/chatBotService';
+import { sendMessage, sendWelcomeMessage } from '../services/chatBotService';
 
 // Handles messages events
 const handleMessage = async (sender_psid: string, received_message: any) => {
@@ -61,13 +61,10 @@ const handlePostback = async (sender_psid: string, received_postback: any) => {
     } else if (payload === 'no') {
         response = { text: 'Oops, try sending another image.' };
     } else if (payload === 'GET_STARTED') {
-        const username = await fetchFacebookUsername(sender_psid);
-        response = {
-            text: `Hi ${username},  Welcome to O.T Creatives page`,
-        };
+        await sendWelcomeMessage(sender_psid);
     }
     // Send the message to acknowledge the postback
-    await sendMessage(sender_psid, response);
+    // await sendMessage(sender_psid, response);
 };
 
 export { handleMessage, handlePostback };

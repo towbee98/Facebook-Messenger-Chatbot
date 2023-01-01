@@ -50,6 +50,7 @@ const sendWelcomeMessage = async (sender_psid: string) => {
         await sendMessage(sender_psid, response1);
         await sendMessage(sender_psid, response2);
         await sendMessage(sender_psid, response3);
+        await sendMessage(sender_psid, response4);
         console.log('done');
     } catch (error) {
         throw error;
