@@ -5,7 +5,10 @@ import {
     markMessageAsTypingOn,
 } from '../services/homepageService';
 import { fetchFacebookUsername } from '../services/homepageService';
-import { sendCategoriesTemplate } from '../helpers/templateMessage';
+import {
+    sendCategoriesTemplate,
+    showHeadPhonesTemplate,
+} from '../helpers/templateMessage';
 
 const sendWelcomeMessage = async (sender_psid: string) => {
     try {
@@ -121,7 +124,8 @@ const showTvs = async (sender_psid: string) => {
 };
 const showHeadPhones = async (sender_psid: string) => {
     try {
-        console.log(sender_psid);
+        let response = showHeadPhonesTemplate();
+        await sendMessage(sender_psid, response);
     } catch (error) {
         throw error;
     }

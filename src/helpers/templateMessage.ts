@@ -156,4 +156,4 @@ const showHeadPhonesTemplate = () => {
         },
     };
 };
-export { sendCategoriesTemplate };
+export { sendCategoriesTemplate, showHeadPhonesTemplate };
