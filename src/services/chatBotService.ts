@@ -6,6 +6,7 @@ import {
 } from '../services/homepageService';
 import { fetchFacebookUsername } from '../services/homepageService';
 import {
+    lookupOrderTemplate,
     sendCategoriesTemplate,
     showHeadPhonesTemplate,
 } from '../helpers/templateMessage';
@@ -90,7 +91,6 @@ const sendMessage = async (sender_psid: string, response: any) => {
 
 const sendCategories = async (sender_psid: string) => {
     try {
-        console.log(sender_psid);
         let response = sendCategoriesTemplate();
         await sendMessage(sender_psid, response);
         console.log('done');
@@ -101,12 +101,28 @@ const sendCategories = async (sender_psid: string) => {
 
 const sendLookupOrder = async (sender_psid: string) => {
     try {
-        console.log(sender_psid);
+        let response = lookupOrderTemplate();
+        await sendMessage(sender_psid, response);
+        console.log('done');
     } catch (error) {
         throw error;
     }
 };
 
+const setInfoOrderByWebview = async (sender_psid: string) => {
+    try {
+        let response = lookupOrderTemplate();
+    } catch (error) {
+        throw error;
+    }
+};
+
+const backToMainMenu = async (sender_psid: string) => {
+    try {
+    } catch (error) {
+        throw error;
+    }
+};
 const requestTalkToAgent = async (sender_psid: string) => {
     try {
         console.log(sender_psid);
@@ -155,4 +171,6 @@ export {
     showHeadPhones,
     showPlayStations,
     backToCategories,
+    backToMainMenu,
+    setInfoOrderByWebview,
 };

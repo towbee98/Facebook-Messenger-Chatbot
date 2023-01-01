@@ -1,11 +1,13 @@
 import { fetchFacebookUsername } from '../services/homepageService';
 import {
     backToCategories,
+    backToMainMenu,
     requestTalkToAgent,
     sendCategories,
     sendLookupOrder,
     sendMessage,
     sendWelcomeMessage,
+    setInfoOrderByWebview,
     showHeadPhones,
     showPlayStations,
     showTvs,
@@ -100,6 +102,10 @@ const handlePostback = async (sender_psid: string, received_postback: any) => {
         await showPlayStations(sender_psid);
     } else if (payload === 'BACK_TO_CATEGORIES') {
         await backToCategories(sender_psid);
+    } else if (payload === 'SET_INFO_ORDER') {
+        await setInfoOrderByWebview(sender_psid);
+    } else if (payload === 'BACK_TO_MAIN_MENU') {
+        await backToMainMenu(sender_psid);
     }
 };
 

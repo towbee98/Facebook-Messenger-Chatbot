@@ -105,6 +105,11 @@ const showHeadPhonesTemplate = () => {
                                 title: 'Back to Categories',
                                 payload: 'BACK_TO_CATEGORIES',
                             },
+                            {
+                                type: 'postback',
+                                title: 'Back to Main Menu',
+                                payload: 'BACK_TO_MAIN_MENU',
+                            },
                         ],
                     },
                     {
@@ -126,6 +131,11 @@ const showHeadPhonesTemplate = () => {
                                 type: 'postback',
                                 title: 'Back to Categories',
                                 payload: 'BACK_TO_CATEGORIES',
+                            },
+                            {
+                                type: 'postback',
+                                title: 'Back to Main Menu',
+                                payload: 'BACK_TO_MAIN_MENU',
                             },
                         ],
                     },
@@ -149,6 +159,11 @@ const showHeadPhonesTemplate = () => {
                                 title: 'Back to Categories',
                                 payload: 'BACK_TO_CATEGORIES',
                             },
+                            {
+                                type: 'postback',
+                                title: 'Back to Main Menu',
+                                payload: 'BACK_TO_MAIN_MENU',
+                            },
                         ],
                     },
                 ],
@@ -156,4 +171,57 @@ const showHeadPhonesTemplate = () => {
         },
     };
 };
-export { sendCategoriesTemplate, showHeadPhonesTemplate };
+
+const lookupOrderTemplate = () => {
+    return {
+        attachment: {
+            type: 'template',
+            payload: {
+                template_type: 'button',
+                text: "Let's set info about your order.so i won't need to ask for them in future.",
+                buttons: [
+                    {
+                        type: 'postback',
+                        title: 'Set Info',
+                        payload: 'SET_INFO_ORDER',
+                    },
+                    {
+                        type: 'postback',
+                        title: 'Back to Main Menu',
+                        payload: 'BACK_TO_MAIN_MENU',
+                    },
+                ],
+            },
+        },
+    };
+};
+
+const backToMainMenuTemplate = () => {
+    return {
+        text: 'What do you want to do?',
+        quick_replies: [
+            {
+                content_type: 'text',
+                title: 'Talk to an agent',
+                payload: 'CARE_HELP',
+                //payload:'TALK_AGENT',
+            },
+            {
+                content_type: 'text',
+                title: 'Categories',
+                payload: 'CATEGORIES',
+            },
+            {
+                content_type: 'text',
+                title: 'Lookup order',
+                payload: 'LOOKUP_ORDER',
+            },
+        ],
+    };
+};
+export {
+    sendCategoriesTemplate,
+    showHeadPhonesTemplate,
+    lookupOrderTemplate,
+    backToMainMenuTemplate,
+};
