@@ -87,7 +87,7 @@ const showHeadPhonesTemplate = () => {
                 elements: [
                     {
                         title: 'Sony noise cancelling headphones',
-                        image_url: 'https://bit.ly/imageHeadphone1',
+                        image_url: 'https://bit.ly/imageHeadphone1a',
                         subtitle: '$348.00',
                         default_action: {
                             type: 'web_url',
@@ -109,7 +109,7 @@ const showHeadPhonesTemplate = () => {
                     },
                     {
                         title: 'Sony Industry Leading Noise Canceling Wireless behind -neck',
-                        image_url: 'https://bit.ly/imageHeadphone2',
+                        image_url: 'https://bit.ly/imageHeadphone1b',
                         subtitle: '$298',
                         default_action: {
                             type: 'web_url',
@@ -131,7 +131,7 @@ const showHeadPhonesTemplate = () => {
                     },
                     {
                         title: 'Sony Wireless in-ear Headset',
-                        image_url: 'https://bit.ly/imageHeadphone3',
+                        image_url: 'https://bit.ly/imageHeadphone1c',
                         subtitle: '$38.00',
                         default_action: {
                             type: 'web_url',
