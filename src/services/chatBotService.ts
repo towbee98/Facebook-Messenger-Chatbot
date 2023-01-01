@@ -6,6 +6,7 @@ import {
 } from '../services/homepageService';
 import { fetchFacebookUsername } from '../services/homepageService';
 import {
+    backToMainMenuTemplate,
     lookupOrderTemplate,
     sendCategoriesTemplate,
     showHeadPhonesTemplate,
@@ -119,6 +120,9 @@ const setInfoOrderByWebview = async (sender_psid: string) => {
 
 const backToMainMenu = async (sender_psid: string) => {
     try {
+        let response = backToMainMenuTemplate();
+        await sendMessage(sender_psid, response);
+        console.log('done');
     } catch (error) {
         throw error;
     }
