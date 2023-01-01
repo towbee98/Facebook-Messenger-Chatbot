@@ -1,5 +1,5 @@
 import { RequestHandler } from 'express';
-import { handleSetupProfileAPI } from '../services/handlerService';
+import { handleSetupProfileAPI } from '../services/homepageService';
 const getHomePage: RequestHandler = (req, res, next) => {
     res.render('homePage');
 };

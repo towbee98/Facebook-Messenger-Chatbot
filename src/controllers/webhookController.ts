@@ -1,10 +1,6 @@
 import { RequestHandler } from 'express';
 import config from '../config';
-import {
-    handleMessage,
-    handlePostback,
-    callSendAPI,
-} from '../helpers/eventHandlers';
+import { handleMessage, handlePostback } from '../helpers/eventHandlers';
 const getWebHooks: RequestHandler = (req, res, next) => {
     // Parse the query params
     let mode = req.query['hub.mode'];
